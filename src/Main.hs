@@ -11,16 +11,16 @@ indexHandler :: Handler Pollock Pollock ()
 indexHandler = writeText $ T.pack "Hello, world!"
 
 -- | Build a new Pollock snaplet.
-memoiseInit :: SnapletInit Pollock Pollock
-memoiseInit = 
+pollockInit :: SnapletInit Pollock Pollock
+pollockInit = 
   makeSnaplet "pollock" 
               "Best pollin system!" 
               Nothing 
   $ do
       addRoutes [("", indexHandler)]
-      return $ Memoise { }
+      return $ Pollock { }
 
 main :: IO ()
 main = do
-  (_, site, _) <- runSnaplet Nothing memoiseInit -- Init Pollock snaplet
+  (_, site, _) <- runSnaplet Nothing pollockInit -- Init Pollock snaplet
   quickHttpServe site -- Start the Snap server
