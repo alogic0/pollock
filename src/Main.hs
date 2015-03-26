@@ -14,7 +14,7 @@ indexHandler = writeText $ T.pack "Hello, world!"
 pollockInit :: SnapletInit Pollock Pollock
 pollockInit = 
   makeSnaplet "pollock" 
-              "Best pollin system!" 
+              "Best polling system!" 
               Nothing 
   $ do
       addRoutes [("", indexHandler)]
